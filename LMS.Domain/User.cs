@@ -10,6 +10,8 @@ namespace LMS.Domain
         public UserRole Role { get; set; }
         public decimal Gpa { get; set; }
 
-
+        //Reletionships
+        public int GroupId { get; set; }
+        public virtual Group Group { get; set; }
     }
 }
