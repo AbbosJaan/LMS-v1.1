@@ -1,6 +1,8 @@
-﻿namespace LMS.Domain
+﻿using LMS.Domain.Base;
+
+namespace LMS.Domain
 {
-    public class Group
+    public class Group : IEntityBase
     {
         public int Id { get; set; }
         public string Name { get; set; }

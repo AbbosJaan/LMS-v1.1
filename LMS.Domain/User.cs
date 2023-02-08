@@ -1,8 +1,9 @@
-﻿using LMS.Domain.Enums;
+﻿using LMS.Domain.Base;
+using LMS.Domain.Enums;
 
 namespace LMS.Domain
 {
-    public class User
+    public class User : IEntityBase
     {
         public int Id { get; set; }
         public string FullName { get; set; }
