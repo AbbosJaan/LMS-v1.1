@@ -2,7 +2,7 @@
 
 namespace LMS.ViewModel
 {
-    public class CourseVM
+    public class CourseViewModel
     {
         public int Id { get; set; }
         public string Name { get; set; }
@@ -10,8 +10,8 @@ namespace LMS.ViewModel
         public DateTime EndDate { get; set; }
 
         //Reletionships
-        public virtual ICollection<Groups_Courses> Groups_Courses { get; set; }
-        public virtual ICollection<TopicVM> Topics { get; set; }
+        public virtual ICollection<Groups_CoursesViewModel> Groups_Courses { get; set; }
+        public virtual ICollection<TopicViewModel> Topics { get; set; }
 
     }
 }

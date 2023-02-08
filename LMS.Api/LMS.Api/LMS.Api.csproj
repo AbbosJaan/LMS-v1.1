@@ -16,10 +16,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Controllers\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\..\LMS.Data\LMS.Data.csproj" />
     <ProjectReference Include="..\..\LMS.Service\LMS.Service.csproj" />
     <ProjectReference Include="..\..\LMS.ViewModel\LMS.ViewModel.csproj" />

@@ -2,7 +2,9 @@
 
 namespace LMS.Service.Interfaces
 {
-    public interface IGroupSerivce : IGenericCRUDService<GroupVM>
+    public interface IGroupSerivce : IGenericCRUDService<GroupViewModel>
     {
+       
     }
+
 }

@@ -1,7 +1,7 @@
 ﻿
 namespace LMS.ViewModel
 {
-    public class TopicVM
+    public class TopicViewModel
     {
         public int Id { get; set; }
         public string Name { get; set; }
@@ -9,6 +9,6 @@ namespace LMS.ViewModel
         
         //Reletionship
         public int CourseId { get; set; }
-        public CourseVM Course { get; set; }
+        public CourseViewModel Course { get; set; }
     }
 }
