@@ -1,3 +1,4 @@
+using LMS.Api.Statics;
 using LMS.Data;
 using LMS.Data.Interfaces;
 using LMS.Domain;
@@ -35,5 +36,7 @@ app.UseHttpsRedirection();
 app.UseAuthorization();
 
 app.MapControllers();
+
+//AppDbInitializer.Seed(app);
 
 app.Run();
