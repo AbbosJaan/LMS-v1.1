@@ -40,7 +40,7 @@ namespace LMS.ViewModel
             {
                 Id = entity.Id,
                 Name = entity.Name,
-                Groups_Courses = groups_coures,
+                //Groups_Courses = groups_coures,
                 Users = users
             };
         }
