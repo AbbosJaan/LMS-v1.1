@@ -11,7 +11,7 @@ namespace LMS.ViewModel
 
         //Reletionships
         public virtual ICollection<UserViewModel> Users { get; set; }
-        public virtual ICollection<Groups_CoursesViewModel> Groups_Courses { get; set; }
+        public virtual ICollection<CourseViewModel> Courses { get; set; }
 
 
         //Operators - mapping
@@ -31,16 +31,16 @@ namespace LMS.ViewModel
                 users.Add((UserViewModel)user);
             }
 
-            //ICollection<Groups_CoursesViewModel> groups_coures = new List<Groups_CoursesViewModel>();
-            /*foreach (Groups_Courses item in entity.Groups_Courses)
+            ICollection<CourseViewModel> courses = new List<CourseViewModel>();
+            foreach (Groups_Courses item in entity.Groups_Courses)
             {
-                groups_coures.Add((Groups_CoursesViewModel)item);
-            }*/
+                courses.Add((CourseViewModel)item.Course);
+            }
             return new GroupViewModel
             {
                 Id = entity.Id,
                 Name = entity.Name,
-                //Groups_Courses = groups_coures,
+                Courses = courses,
                 Users = users
             };
         }
