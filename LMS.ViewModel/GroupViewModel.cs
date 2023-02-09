@@ -31,11 +31,11 @@ namespace LMS.ViewModel
                 users.Add((UserViewModel)user);
             }
 
-            ICollection<Groups_CoursesViewModel> groups_coures = new List<Groups_CoursesViewModel>();
-            foreach (Groups_Courses item in entity.Groups_Courses)
+            //ICollection<Groups_CoursesViewModel> groups_coures = new List<Groups_CoursesViewModel>();
+            /*foreach (Groups_Courses item in entity.Groups_Courses)
             {
                 groups_coures.Add((Groups_CoursesViewModel)item);
-            }
+            }*/
             return new GroupViewModel
             {
                 Id = entity.Id,

@@ -8,8 +8,8 @@ namespace LMS.Service
 {
     public class GroupService : IGenericCRUDService<GroupViewModel>
     {
-        private readonly IEntityBaseRepository<Group> _repository;
-        public GroupService(IEntityBaseRepository<Group> repository, AppDbContext context)
+        private readonly IGroupBaseRepository _repository;
+        public GroupService(IGroupBaseRepository repository)
         {
              _repository = repository;
         }

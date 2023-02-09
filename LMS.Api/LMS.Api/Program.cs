@@ -14,7 +14,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddDbContext<AppDbContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnectionString")));
 
 builder.Services.AddTransient<IGenericCRUDService<GroupViewModel>, GroupService>();
-builder.Services.AddTransient<IEntityBaseRepository<Group>, EntityBaseRepository<Group>>();
+builder.Services.AddTransient<IGroupBaseRepository, GroupBaseRepository>();
 
 
 builder.Services.AddControllers();

@@ -51,4 +51,3 @@ namespace LMS.Data
         }
     }
 }
-//Ishlar qalay
