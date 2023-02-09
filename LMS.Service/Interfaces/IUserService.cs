@@ -2,7 +2,7 @@
 
 namespace LMS.Service.Interfaces
 {
-    public interface IUserService : IGenericCRUDService<UserViewModel>
+    public interface IUserService : IGenericCRUDService<UserViewModel, UserViewModel>
     {
     }
 }

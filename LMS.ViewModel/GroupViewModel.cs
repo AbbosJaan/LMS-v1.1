@@ -26,15 +26,20 @@ namespace LMS.ViewModel
         public static explicit operator GroupViewModel(Group entity)
         {
             ICollection<UserViewModel> users = new List<UserViewModel>();
-            foreach (User user in entity.Users)
+            if(entity.Users != null)
             {
-                users.Add((UserViewModel)user);
+                foreach (User user in entity.Users)
+                {
+                    users.Add((UserViewModel)user);
+                }
             }
-
             ICollection<CourseViewModel> courses = new List<CourseViewModel>();
-            foreach (Groups_Courses item in entity.Groups_Courses)
+            if(entity.Groups_Courses != null)
             {
-                courses.Add((CourseViewModel)item.Course);
+                foreach (Groups_Courses item in entity.Groups_Courses)
+                {
+                    courses.Add((CourseViewModel)item.Course);
+                }
             }
             return new GroupViewModel
             {

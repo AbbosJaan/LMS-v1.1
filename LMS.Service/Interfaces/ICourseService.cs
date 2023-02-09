@@ -2,7 +2,7 @@
 
 namespace LMS.Service.Interfaces
 {
-    public  interface ICourseService : IGenericCRUDService<CourseViewModel>
+    public  interface ICourseService : IGenericCRUDService<CourseViewModel, CourseViewModel>
     {
     }
 }

@@ -3,10 +3,11 @@ using LMS.Data.Interfaces;
 using LMS.Domain;
 using LMS.Service.Interfaces;
 using LMS.ViewModel;
+using LMS.ViewModel.CreationViewModel;
 
 namespace LMS.Service
 {
-    public class GroupService : IGenericCRUDService<GroupViewModel>
+    public class GroupService : IGroupSerivce
     {
         private readonly IGroupBaseRepository _repository;
         public GroupService(IGroupBaseRepository repository)
@@ -14,7 +15,7 @@ namespace LMS.Service
              _repository = repository;
         }
 
-        public async Task<GroupViewModel> CreateAsync(GroupViewModel model)
+        public async Task<GroupViewModel> CreateAsync(GroupCreationViewModel model)
         {
             var result = await _repository.AddAsync((Group)model);
             return (GroupViewModel)result;

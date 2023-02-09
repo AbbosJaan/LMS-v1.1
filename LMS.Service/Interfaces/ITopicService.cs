@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace LMS.Service.Interfaces
 {
-    public interface ITopicService : IGenericCRUDService<TopicViewModel>
+    public interface ITopicService : IGenericCRUDService<TopicViewModel, TopicViewModel>
     {
     }
 }
