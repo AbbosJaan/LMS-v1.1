@@ -11,8 +11,10 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddDbContext<AppDbContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnectionString")));
 
 
-builder.Services.AddTransient<IGroupBaseRepository, GroupBaseRepository>();
-builder.Services.AddTransient<IGroupSerivce, GroupService>();
+builder.Services.AddScoped<IGroupBaseRepository, GroupBaseRepository>();
+builder.Services.AddScoped<IGroupSerivce, GroupService>();
+
+builder.Services.AddScoped<ICourseBaseRepository, CourseBaseRepository>();
 
 
 builder.Services.AddControllers();
