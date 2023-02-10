@@ -27,7 +27,7 @@ namespace LMS.Service.Groups
 
         public async Task<IEnumerable<GroupViewModel>> GetAllAsync()
         {
-            var groups = await _repository.GetAllWithCourseAsync();
+            var groups = await _repository.GetAllGroupsAsync();
             var result = new List<GroupViewModel>();
             foreach (var group in groups)
             {

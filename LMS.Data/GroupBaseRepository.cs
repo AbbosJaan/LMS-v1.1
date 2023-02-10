@@ -12,7 +12,7 @@ namespace LMS.Data
             _context = context;
         }
 
-        public async Task<IEnumerable<Group>> GetAllWithCourseAsync()
+        public async Task<IEnumerable<Group>> GetAllGroupsAsync()
         {
             var groups = await _context.Groups
                 .Include(u => u.Users)
