@@ -1,6 +1,7 @@
 ﻿using LMS.Data.Interfaces;
 using LMS.Domain.Base;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.ChangeTracking;
 using System.Linq.Expressions;
 
 namespace LMS.Data
@@ -43,12 +44,11 @@ namespace LMS.Data
         public async Task<T> GetByIdAsync(int id) => await _context.Set<T>().FirstOrDefaultAsync(x => x.Id == id);
 
         public async Task<T> UpdateAsync(int id, T entity)
-        {
-            var lastT = await _context.Set<T>().FirstOrDefaultAsync(x => x.Id == id);
-            var updatedT = _context.Set<T>().Attach(lastT);
-            updatedT.State = EntityState.Modified;
+        { 
+            EntityEntry entityEntry = _context.Entry<T>(entity);
+            entityEntry.State = EntityState.Modified;
             await _context.SaveChangesAsync();
-            return entity;
+            return await _context.Set<T>().FirstOrDefaultAsync(x => x.Id == id);
         }
     }
 }

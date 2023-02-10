@@ -22,5 +22,12 @@ namespace LMS.Data
 
             return groups;
         }
+        public async Task<Group> UpdateGroupAsync(int id, Group entity)
+        {
+            var updatedGroup = await _context.Groups.FirstOrDefaultAsync(x => x.Id == id);
+            updatedGroup.Name = entity.Name;
+            await _context.SaveChangesAsync();
+            return updatedGroup;
+        }
     }
 }

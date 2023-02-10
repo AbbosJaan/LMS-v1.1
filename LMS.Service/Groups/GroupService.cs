@@ -44,7 +44,7 @@ namespace LMS.Service.Groups
 
         public async Task<GroupViewModel> UpdateAsync(int id, GroupCreationViewModel model)
         {
-            var updateGroup = await _repository.UpdateAsync(id, (Group)model);
+            var updateGroup = await _repository.UpdateGroupAsync(id, (Group)model);
             return (GroupViewModel)updateGroup;
 
         }
