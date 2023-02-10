@@ -1,9 +1,7 @@
 using LMS.Data;
 using LMS.Data.Interfaces;
-using LMS.Service;
+using LMS.Service.Groups;
 using LMS.Service.Interfaces;
-using LMS.ViewModel;
-using LMS.ViewModel.CreationViewModel;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -11,6 +9,7 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 
 builder.Services.AddDbContext<AppDbContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnectionString")));
+
 
 builder.Services.AddTransient<IGroupBaseRepository, GroupBaseRepository>();
 builder.Services.AddTransient<IGroupSerivce, GroupService>();

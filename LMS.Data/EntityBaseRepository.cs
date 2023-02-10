@@ -44,8 +44,9 @@ namespace LMS.Data
 
         public async Task<T> UpdateAsync(int id, T entity)
         {
-            var updatedEmployee = _context.Set<T>().Attach(entity);
-            updatedEmployee.State = EntityState.Modified;
+            var lastT = await _context.Set<T>().FirstOrDefaultAsync(x => x.Id == id);
+            var updatedT = _context.Set<T>().Attach(lastT);
+            updatedT.State = EntityState.Modified;
             await _context.SaveChangesAsync();
             return entity;
         }

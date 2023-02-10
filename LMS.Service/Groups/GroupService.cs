@@ -1,18 +1,17 @@
-﻿using LMS.Data;
-using LMS.Data.Interfaces;
+﻿using LMS.Data.Interfaces;
 using LMS.Domain;
 using LMS.Service.Interfaces;
 using LMS.ViewModel;
 using LMS.ViewModel.CreationViewModel;
 
-namespace LMS.Service
+namespace LMS.Service.Groups
 {
     public class GroupService : IGroupSerivce
     {
         private readonly IGroupBaseRepository _repository;
         public GroupService(IGroupBaseRepository repository)
         {
-             _repository = repository;
+            _repository = repository;
         }
 
         public async Task<GroupViewModel> CreateAsync(GroupCreationViewModel model)
@@ -21,9 +20,9 @@ namespace LMS.Service
             return (GroupViewModel)result;
         }
 
-        public Task<bool> DeleteAsync(int id)
+        public async Task<bool> DeleteAsync(int id)
         {
-            throw new NotImplementedException();
+            return await _repository.DeleteAsync(id);
         }
 
         public async Task<IEnumerable<GroupViewModel>> GetAllAsync()
@@ -37,14 +36,17 @@ namespace LMS.Service
             return result;
         }
 
-        public Task<GroupViewModel> GetByIdAsync(int id)
+        public async Task<GroupViewModel> GetByIdAsync(int id)
         {
-            throw new NotImplementedException();
+            var group = await _repository.GetByIdAsync(id);
+            return (GroupViewModel)group;
         }
 
-        public Task<GroupViewModel> UpdateAsync(int id, GroupViewModel model)
+        public async Task<GroupViewModel> UpdateAsync(int id, GroupCreationViewModel model)
         {
-            throw new NotImplementedException();
+            var updateGroup = await _repository.UpdateAsync(id, (Group)model);
+            return (GroupViewModel)updateGroup;
+
         }
     }
 }
