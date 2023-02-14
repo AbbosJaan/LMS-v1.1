@@ -1,4 +1,6 @@
-﻿using LMS.Service.Interfaces;
+﻿using LMS.Data.Interfaces;
+using LMS.Domain;
+using LMS.Service.Interfaces;
 using LMS.ViewModel;
 using LMS.ViewModel.CreationViewModel;
 
@@ -6,29 +8,40 @@ namespace LMS.Service.Courses
 {
     public class CourseService : ICourseService
     {
-        public Task<CourseViewModel> CreateAsync(CourseCreationViewModel model)
+        private readonly ICourseBaseRepository _repository;
+        public CourseService(ICourseBaseRepository repository)
         {
-            throw new NotImplementedException();
+            _repository = repository;
         }
 
-        public Task<bool> DeleteAsync(int id)
+        public async Task<CourseViewModel> CreateAsync(CourseCreationViewModel model)
         {
-            throw new NotImplementedException();
+            var result = await _repository.AddAsync((Course)model);
+            return (CourseViewModel)result;
         }
 
-        public Task<IEnumerable<CourseViewModel>> GetAllAsync()
+        public async Task<bool> DeleteAsync(int id)
         {
-            throw new NotImplementedException();
+            return await _repository.DeleteAsync(id);
         }
 
-        public Task<CourseViewModel> GetByIdAsync(int id)
+        public async Task<IEnumerable<CourseViewModel>> GetAllAsync()
         {
-            throw new NotImplementedException();
+            var courses = await _repository.GetAllAsync();
+            IEnumerable<CourseViewModel> viewCourses = new  List<CourseViewModel>();
+            foreach(var course in courses)
+            {
+                await _repository.AddAsync(course);
+            }
+            return viewCourses;
         }
 
-        public Task<CourseViewModel> UpdateAsync(int id, CourseCreationViewModel model)
+        public async Task<CourseViewModel> GetByIdAsync(int id)
         {
-            throw new NotImplementedException();
+            return (CourseViewModel)await _repository.GetByIdAsync(id);
         }
+
+        public async Task<CourseViewModel> UpdateAsync(int id, CourseCreationViewModel model) => await _repository.UpdateAsync(id, (Course) model) 
+
     }
 }

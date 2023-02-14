@@ -13,5 +13,14 @@ namespace LMS.Domain
         public virtual ICollection<Groups_Courses> Groups_Courses { get; set; }
         public virtual ICollection<Topic> Topics { get; set; }
 
+        public static explicit operator Course(LMS.ViewModel.CreationViewModel.CourseCreationViewModel v)
+        {
+            throw new NotImplementedException();
+        }
+
+        public static explicit operator Course(LMS.ViewModel.CreationViewModel.CourseCreationViewModel v)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
