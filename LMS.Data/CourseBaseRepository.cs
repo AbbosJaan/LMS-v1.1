@@ -12,6 +12,8 @@ namespace LMS.Data
             _context = context;
         }
 
+        public async Task<List<Course>> GetAllCourseAsync() => await _context.Courses.Include(x => x.Topics).ToListAsync();
+
         public async Task<Course> UpdateCourseAsync(int id, Course course)
         {
             var courseData = await _context.Courses.FirstOrDefaultAsync(x => x.Id == id);

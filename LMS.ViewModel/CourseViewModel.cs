@@ -15,10 +15,10 @@ namespace LMS.ViewModel
 
         public static explicit operator CourseViewModel(Course entity)
         {
-            var topics = new List<TopicViewModel>();
+            ICollection<TopicViewModel> topics = new List<TopicViewModel>();
             if(entity.Topics != null)
             {
-                foreach (var topic in entity.Topics)
+                foreach (Topic topic in entity.Topics)
                 {
                     topics.Add((TopicViewModel)topic);
                 }    

@@ -16,7 +16,7 @@ namespace LMS.ViewModel
             return new TopicViewModel
             {
                 Name = topic.Name,
-                Course = (CourseViewModel)topic.Course,
+                //Course = (CourseViewModel)topic.Course,
                 Date = topic.Date
             };
         }

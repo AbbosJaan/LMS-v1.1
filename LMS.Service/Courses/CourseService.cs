@@ -27,7 +27,7 @@ namespace LMS.Service.Courses
 
         public async Task<IEnumerable<CourseViewModel>> GetAllAsync()
         {
-            var courses = await _repository.GetAllAsync();
+            var courses = await _repository.GetAllCourseAsync();
             List<CourseViewModel> viewCourses = new List<CourseViewModel>();
             foreach(var course in courses)
             {
