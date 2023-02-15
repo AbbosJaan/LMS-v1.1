@@ -1,14 +1,24 @@
 ﻿
+using LMS.Domain;
+
 namespace LMS.ViewModel
 {
     public class TopicViewModel
     {
-        public int Id { get; set; }
         public string Name { get; set; }
         public DateTime Date { get; set; }
         
         //Reletionship
-        public int CourseId { get; set; }
         public CourseViewModel Course { get; set; }
+        
+        public static explicit operator TopicViewModel(Topic topic)
+        {
+            return new TopicViewModel
+            {
+                Name = topic.Name,
+                Course = (CourseViewModel)topic.Course,
+                Date = topic.Date
+            };
+        }
     }
 }

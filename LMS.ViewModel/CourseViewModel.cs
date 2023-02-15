@@ -10,19 +10,26 @@ namespace LMS.ViewModel
         public string Name { get; set; }
         public DateTime StartDate { get; set; }
         public DateTime EndDate { get; set; }
-
-        //Reletionships
-        public virtual ICollection<Groups_CoursesViewModel> Groups_Courses { get; set; }
         public virtual ICollection<TopicViewModel> Topics { get; set; }
+
 
         public static explicit operator CourseViewModel(Course entity)
         {
+            var topics = new List<TopicViewModel>();
+            if(entity.Topics != null)
+            {
+                foreach (var topic in entity.Topics)
+                {
+                    topics.Add((TopicViewModel)topic);
+                }    
+            }
             return new CourseViewModel
             {
                 Id = entity.Id,
                 Name = entity.Name,
                 StartDate = entity.StartDate,
                 EndDate = entity.EndDate,
+                Topics = topics
             };
         }
     }

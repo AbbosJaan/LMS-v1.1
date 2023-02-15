@@ -28,10 +28,10 @@ namespace LMS.Service.Courses
         public async Task<IEnumerable<CourseViewModel>> GetAllAsync()
         {
             var courses = await _repository.GetAllAsync();
-            IEnumerable<CourseViewModel> viewCourses = new  List<CourseViewModel>();
+            List<CourseViewModel> viewCourses = new List<CourseViewModel>();
             foreach(var course in courses)
             {
-                await _repository.AddAsync(course);
+                viewCourses.Add((CourseViewModel)course);
             }
             return viewCourses;
         }

@@ -1,8 +1,5 @@
-﻿using LMS.Service;
-using LMS.Service.Interfaces;
-using LMS.ViewModel;
+﻿using LMS.Service.Interfaces;
 using LMS.ViewModel.CreationViewModel;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace LMS.Api.Controllers

@@ -32,7 +32,11 @@ namespace LMS.Data
             return false;
         }
 
-        public async Task<IEnumerable<T>> GetAllAsync() => await _context.Set<T>().ToListAsync();
+        public async Task<IEnumerable<T>> GetAllAsync()
+        {
+            var result = await _context.Set<T>().ToListAsync();
+            return result;
+        }
 
         public async Task<IEnumerable<T>> GetAllAsync(params Expression<Func<T, object>>[] includeProperties)
         {
