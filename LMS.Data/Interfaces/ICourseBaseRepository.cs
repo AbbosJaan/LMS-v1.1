@@ -6,5 +6,6 @@ namespace LMS.Data.Interfaces
     {
         Task<Course> UpdateCourseAsync(int id, Course course);
         Task<List<Course>> GetAllCourseAsync();
+        Task<Course> GetCourseByIdAsync(int id);
     }
 }

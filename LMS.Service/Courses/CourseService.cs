@@ -38,7 +38,7 @@ namespace LMS.Service.Courses
 
         public async Task<CourseViewModel> GetByIdAsync(int id)
         {
-            return (CourseViewModel)await _repository.GetByIdAsync(id);
+            return (CourseViewModel)await _repository.GetCourseByIdAsync(id);
         }
 
         public async Task<CourseViewModel> UpdateAsync(int id, CourseCreationViewModel model)
