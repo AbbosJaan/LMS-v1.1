@@ -15,9 +15,19 @@ namespace LMS.Data
         }
         public async Task<T> AddAsync(T entity)
         {
-            await _context.Set<T>().AddAsync(entity);   
+            var a =await _context.Set<T>().AddAsync(entity);   
             await _context.SaveChangesAsync();
             return entity;
+        }
+
+        public async Task<T> AddAsync(T entity, params Expression<Func<T, object>>[] includePrioerties)
+        {
+            await _context.Set<T>().AddAsync(entity);
+            await _context.SaveChangesAsync();
+            IQueryable<T> result = _context.Set<T>();
+            result = includePrioerties.Aggregate(result, (current, includePrioerties) => current.Include(includePrioerties));
+            return await result.FirstOrDefaultAsync(x => x.Id == entity.Id);
+
         }
 
         public async Task<bool> DeleteAsync(int id)

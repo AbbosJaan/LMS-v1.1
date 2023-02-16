@@ -16,7 +16,7 @@ namespace LMS.Service.Topics
 
         public async Task<TopicViewModel> CreateAsync(TopicCreationViewModel model)
         {
-            var updateTopic = await _topicBaseRepository.AddAsync((Topic) model);
+            var updateTopic = await _topicBaseRepository.AddAsync((Topic) model, x => x.Course);
             return (TopicViewModel) updateTopic;
         }
 
