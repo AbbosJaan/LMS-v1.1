@@ -25,7 +25,7 @@ namespace LMS.Api.Controllers
         [HttpGet("{id}")]
         public async Task<IActionResult> Get(int id)
         {
-            var result = _topicService.GetByIdAsync(id);
+            var result = await _topicService.GetByIdAsync(id);
             if(result == null)
                 return NotFound("Topic is not found!");
             return Ok(result);
