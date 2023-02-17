@@ -1,9 +1,11 @@
 using LMS.Data;
 using LMS.Data.Interfaces;
+using LMS.Domain;
 using LMS.Service.Courses;
 using LMS.Service.Groups;
 using LMS.Service.Interfaces;
 using LMS.Service.Topics;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -21,6 +23,10 @@ builder.Services.AddScoped<ICourseService, CourseService>();
 
 builder.Services.AddScoped<ITopicBaseRepository, TopicBaseRepository>();
 builder.Services.AddScoped<ITopicService, TopicService>();
+
+/*
+builder.Services.AddIdentity<User, IdentityRole>()*/
+
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle

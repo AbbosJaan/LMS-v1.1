@@ -13,7 +13,7 @@ namespace LMS.Api.Statics
                 context.Database.EnsureCreated();
 
 
-                if (!context.Users.Any())
+                /*if (!context.Users.Any())
                 {
                     context.Users.AddRange(new List<User>()
                     {
@@ -65,7 +65,7 @@ namespace LMS.Api.Statics
 
                     });
                     context.SaveChanges();
-                }
+                }*/
 
                 //Courses
                 if (!context.Courses.Any())

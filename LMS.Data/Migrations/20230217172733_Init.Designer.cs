@@ -4,6 +4,7 @@ using LMS.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace LMS.Data.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230217172733_Init")]
+    partial class Init
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -121,7 +124,7 @@ namespace LMS.Data.Migrations
                     b.Property<string>("FullName")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("GroupId")
+                    b.Property<int>("GroupId")
                         .HasColumnType("int");
 
                     b.Property<bool>("LockoutEnabled")
@@ -339,7 +342,9 @@ namespace LMS.Data.Migrations
                 {
                     b.HasOne("LMS.Domain.Group", "Group")
                         .WithMany("Users")
-                        .HasForeignKey("GroupId");
+                        .HasForeignKey("GroupId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("Group");
                 });

@@ -16,7 +16,7 @@ namespace LMS.ViewModel
         //public int GroupId { get; set; }
         //public virtual GroupViewModel Group { get; set; }
 
-        public static explicit operator UserViewModel(User user)
+       /* public static explicit operator UserViewModel(User user)
         {
             return new UserViewModel
             {
@@ -27,6 +27,6 @@ namespace LMS.ViewModel
                 Role = user.Role,
                 Password = user.Password
             };
-        }
+        }*/
     }
 }

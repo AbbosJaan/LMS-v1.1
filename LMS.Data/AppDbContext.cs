@@ -1,9 +1,10 @@
 ﻿using LMS.Domain;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
 namespace LMS.Data
 {
-    public class AppDbContext : DbContext
+    public class AppDbContext : IdentityDbContext<User>
     {
         public AppDbContext(DbContextOptions<AppDbContext> dbContextOptions) : base(dbContextOptions) 
         {
@@ -14,7 +15,7 @@ namespace LMS.Data
         public DbSet<Group> Groups { get; set; }
         public DbSet<Groups_Courses> Groups_Courses { get; set; }
         public DbSet<Topic> Topics { get; set; }
-        public DbSet<User> Users { get; set; }
+        //public DbSet<User> Users { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
