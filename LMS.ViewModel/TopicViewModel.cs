@@ -14,6 +14,8 @@ namespace LMS.ViewModel
         
         public static explicit operator TopicViewModel(Topic topic)
         {
+            if(topic == null)
+                return null;
             var course = new CourseViewModel();
             if(topic.Course != null)
             {

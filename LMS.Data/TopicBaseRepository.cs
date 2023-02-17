@@ -24,6 +24,7 @@ namespace LMS.Data
                 updateTopic.Name = topic.Name;
                 updateTopic.Date = topic.Date;
                 updateTopic.CourseId = topic.CourseId;
+                await _context.SaveChangesAsync();
             }
             return updateTopic;
         }
