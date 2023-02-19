@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace LMS.Data.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20230217173048_GoupIdIsSetedNullable")]
-    partial class GoupIdIsSetedNullable
+    [Migration("20230219142519_init")]
+    partial class init
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

@@ -1,3 +1,4 @@
+using LMS.Api.Statics;
 using LMS.Data;
 using LMS.Data.Interfaces;
 using LMS.Domain;
@@ -48,6 +49,6 @@ app.UseAuthorization();
 
 app.MapControllers();
 
-//AppDbInitializer.Seed(app);
+AppDbInitializer.Seed(app);
 
 app.Run();
