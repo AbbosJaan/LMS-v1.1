@@ -24,8 +24,8 @@ builder.Services.AddScoped<ICourseService, CourseService>();
 builder.Services.AddScoped<ITopicBaseRepository, TopicBaseRepository>();
 builder.Services.AddScoped<ITopicService, TopicService>();
 
-/*
-builder.Services.AddIdentity<User, IdentityRole>()*/
+
+/*builder.Services.AddIdentity<User, IdentityRole>().*/
 
 
 builder.Services.AddControllers();
