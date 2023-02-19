@@ -57,12 +57,11 @@ namespace LMS.Data
 
         public async Task<T> GetByIdAsync(int id) => await _context.Set<T>().FirstOrDefaultAsync(x => x.Id == id);
 
-        public async Task<T> UpdateAsync(int id, T entity)
+        public async Task UpdateAsync(int id, T entity)
         { 
             EntityEntry entityEntry = _context.Entry<T>(entity);
             entityEntry.State = EntityState.Modified;
             await _context.SaveChangesAsync();
-            return await _context.Set<T>().FirstOrDefaultAsync(x => x.Id == id);
         }
     }
 }

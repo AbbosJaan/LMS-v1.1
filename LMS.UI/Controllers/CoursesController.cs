@@ -25,12 +25,27 @@ namespace LMS.UI.Controllers
         [HttpPost]
         public async Task<IActionResult> Create([Bind("Name,StartDate,EndDate")] CourseCreationViewModel course)
         {
-            if(!ModelState.IsValid)
+            if (!ModelState.IsValid)
             {
                 return View(course);
             }
             await _courseService.CreateAsync(course);
-            return Redirect(nameof(Index));
+           return Redirect(nameof(Index));
+        }
+
+        public async Task<IActionResult> Edit(int id)
+        {
+            var course = await _courseService.GetByIdForCreation(id);
+            if(course == null) return View("NotFound");
+            return View(course);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Edit(int id, [Bind("Name,StartDate,EndDate")] CourseCreationViewModel course)
+        {
+            if(!ModelState.IsValid) return View(course);
+            await _courseService.UpdateAsync(id, course);
+            return RedirectToAction(nameof(Index));
         }
     }
 }

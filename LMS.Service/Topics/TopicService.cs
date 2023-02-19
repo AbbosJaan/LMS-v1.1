@@ -37,10 +37,11 @@ namespace LMS.Service.Topics
             return (TopicViewModel) topic;
         }
 
-        public async Task<TopicViewModel> UpdateAsync(int id, TopicCreationViewModel model)
+        public Task<TopicCreationViewModel> GetByIdForCreation(int id)
         {
-            var updatedTopic = await _topicBaseRepository.UpdateTopicAsync(id, (Topic)model);
-            return (TopicViewModel) updatedTopic;
+            throw new NotImplementedException();
         }
+
+        public async Task UpdateAsync(int id, TopicCreationViewModel model) => await _topicBaseRepository.UpdateTopicAsync(id, (Topic)model);
     }
 }

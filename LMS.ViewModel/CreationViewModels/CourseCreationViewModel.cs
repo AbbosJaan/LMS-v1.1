@@ -19,5 +19,15 @@ namespace LMS.ViewModel.CreationViewModel
                 EndDate = model.EndDate,
             };
         }
+        public static explicit operator CourseCreationViewModel(Course model)
+        {
+            if(model == null) return null;
+            return new CourseCreationViewModel
+            {
+                Name = model.Name,
+                StartDate = model.StartDate,
+                EndDate = model.EndDate,
+            };
+        }
     }
 }

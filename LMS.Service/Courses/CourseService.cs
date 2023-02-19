@@ -41,11 +41,11 @@ namespace LMS.Service.Courses
             return (CourseViewModel)await _repository.GetCourseByIdAsync(id);
         }
 
-        public async Task<CourseViewModel> UpdateAsync(int id, CourseCreationViewModel model)
+        public async Task<CourseCreationViewModel> GetByIdForCreation(int id)
         {
-            var course =  await _repository.UpdateCourseAsync(id, (Course)model);
-            return (CourseViewModel)course;
+            return (CourseCreationViewModel)await _repository.GetByIdAsync(id);
         }
 
+        public async Task UpdateAsync(int id, CourseCreationViewModel model) => await _repository.UpdateCourseAsync(id, (Course)model);
     }
 }

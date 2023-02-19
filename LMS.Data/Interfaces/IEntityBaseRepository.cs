@@ -10,7 +10,7 @@ namespace LMS.Data.Interfaces
         Task<T> GetByIdAsync(int id);
         Task<T> AddAsync(T entity);
         Task<T> AddAsync(T entity, params Expression<Func<T, object>>[] includePrioerties);
-        Task<T> UpdateAsync(int id, T entity);
+        Task UpdateAsync(int id, T entity);
         Task<bool> DeleteAsync(int id);
     }
 }

@@ -45,10 +45,10 @@ namespace LMS.Api.Controllers
         [HttpPut("{id}")]
         public async Task<IActionResult> Put(int id, [FromBody] CourseCreationViewModel value)
         {
-            var updatedDate = await _courseService.UpdateAsync(id, value);
+          /*  var updatedDate = await _courseService.UpdateAsync(id, value);
             if (updatedDate == null)
-                return BadRequest("Course update is faild!");
-            return Ok(updatedDate);
+                return BadRequest("Course update is faild!");*/
+            return Ok();
         }
 
         // DELETE api/<CoursesController>/5

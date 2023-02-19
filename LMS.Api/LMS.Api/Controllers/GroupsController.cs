@@ -46,8 +46,8 @@ namespace LMS.Api.Controllers
         [HttpPut("{id}")]
         public async Task<IActionResult> Put(int id, [FromBody]GroupCreationViewModel groupCreationViewModel)
         {
-            var updateGroup = await _service.UpdateAsync(id, groupCreationViewModel);
-            return Ok(updateGroup);
+            //var updateGroup = await _service.UpdateAsync(id, groupCreationViewModel);
+            return Ok();
         }
 
         [HttpDelete("{id}")]

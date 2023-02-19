@@ -42,11 +42,12 @@ namespace LMS.Service.Groups
             return (GroupViewModel)group;
         }
 
-        public async Task<GroupViewModel> UpdateAsync(int id, GroupCreationViewModel model)
+        public Task<GroupCreationViewModel> GetByIdForCreation(int id)
         {
-            var updateGroup = await _repository.UpdateGroupAsync(id, (Group)model);
-            return (GroupViewModel)updateGroup;
-
+            throw new NotImplementedException();
         }
+
+        public async Task UpdateAsync(int id, GroupCreationViewModel model) => await _repository.UpdateGroupAsync(id, (Group)model);
+      
     }
 }

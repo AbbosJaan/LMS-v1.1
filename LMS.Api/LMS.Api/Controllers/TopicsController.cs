@@ -45,10 +45,7 @@ namespace LMS.Api.Controllers
         [HttpPut("{id}")]
         public async Task<IActionResult> Put(int id, [FromBody] TopicCreationViewModel model)
         {
-            var updatedTopic = await _topicService.UpdateAsync(id, model);
-            if (updatedTopic == null)
-                return BadRequest("Topic updates failed");
-            return Ok(updatedTopic);
+            return Ok();
         }
 
         // DELETE api/<TopicsController>/5
