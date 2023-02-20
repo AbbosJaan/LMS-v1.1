@@ -11,6 +11,7 @@ namespace LMS.UI.Controllers
         {
             _courseService = courseService;
         }
+
         public async Task<IActionResult> Index()
         {
             var courses = await _courseService.GetAllAsync();
@@ -44,7 +45,23 @@ namespace LMS.UI.Controllers
         public async Task<IActionResult> Edit(int id, [Bind("Name,StartDate,EndDate")] CourseCreationViewModel course)
         {
             if(!ModelState.IsValid) return View(course);
+            
             await _courseService.UpdateAsync(id, course);
+            return RedirectToAction(nameof(Index));
+        }
+
+        public async Task<IActionResult> Delete(int id)
+        {
+            var course = await _courseService.GetByIdAsync(id);
+            if (course == null) return View("NotFound");
+            return View(course);
+        }
+        [HttpPost, ActionName("Delete")]
+        public async Task<IActionResult> DeleteConfirm(int id)
+        {
+            var courseDetails = await _courseService.GetByIdAsync(id);
+            if( courseDetails == null) return View("NotFound");
+            await _courseService.DeleteAsync(id);
             return RedirectToAction(nameof(Index));
         }
     }
