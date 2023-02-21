@@ -13,30 +13,16 @@ namespace LMS.Service.Topics
         {
             _topicBaseRepository = topicBaseRepository;
         }
-
-        public async Task<TopicViewModel> CreateAsync(TopicCreationViewModel model)
-        {
-            var updateTopic = await _topicBaseRepository.AddAsync((Topic) model, x => x.Course);
-            return (TopicViewModel) updateTopic;
-        }
-
         public async Task<bool> DeleteAsync(int id) => await _topicBaseRepository.DeleteAsync(id);
 
-        public async Task<IEnumerable<TopicViewModel>> GetAllAsync()
+        public async Task<IEnumerable<TopicViewModel>> GetAllAsync(int courseId)
         {
-            var topics = await _topicBaseRepository.GetAllTopicsAsync();
+            var topics = await _topicBaseRepository.GetAllTopicsAsync(courseId);
             var result = new List<TopicViewModel>();
             foreach (Topic topic in topics)
                 result.Add((TopicViewModel)topic);
             return result;
         } 
-
-        public async Task<TopicViewModel> GetByIdAsync(int id)
-        {
-            var topic = await _topicBaseRepository.GetTopicByIdAsync(id);
-            return (TopicViewModel) topic;
-        }
-
         public Task<TopicCreationViewModel> GetByIdForCreation(int id)
         {
             throw new NotImplementedException();
