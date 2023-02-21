@@ -50,6 +50,12 @@ namespace LMS.UI.Controllers
             return RedirectToAction(nameof(Index));
         }
 
+        public async Task<IActionResult> Details(int id)
+        {
+            var courseDetails = await _courseService.GetCourseTopicsAsync(id);
+            return View(courseDetails);
+        }
+
         public async Task<IActionResult> Delete(int id)
         {
             var course = await _courseService.GetByIdAsync(id);
