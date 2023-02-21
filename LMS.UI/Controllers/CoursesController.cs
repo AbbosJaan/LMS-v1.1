@@ -7,9 +7,11 @@ namespace LMS.UI.Controllers
     public class CoursesController : Controller
     {
         private readonly ICourseService _courseService;
-        public CoursesController(ICourseService courseService)
+        private readonly ITopicService _topicService;
+        public CoursesController(ICourseService courseService, ITopicService topicService)
         {
             _courseService = courseService;
+            _topicService = topicService;
         }
 
         public async Task<IActionResult> Index()
@@ -52,8 +54,9 @@ namespace LMS.UI.Controllers
 
         public async Task<IActionResult> Details(int id)
         {
-            var courseDetails = await _courseService.GetCourseTopicsAsync(id);
-            return View(courseDetails);
+            var topics = await _topicService.GetAllAsync(id);
+            //var courseDetails = await _courseService.GetCourseTopicsAsync(id);
+            return View(topics);
         }
 
         public async Task<IActionResult> Delete(int id)
