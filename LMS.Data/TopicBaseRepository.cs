@@ -13,6 +13,13 @@ namespace LMS.Data
             _context = context;
         }
 
+        public async Task<Topic> CreateTopicAsync(Topic topic)
+        {
+            var result = await _context.Topics.AddAsync(topic);
+            await _context.SaveChangesAsync();
+            return topic;
+        }
+
         public async Task<IEnumerable<Topic>> GetAllTopicsAsync(int courseId) => await _context.Topics.Include(x => x.Course).Where(x => x.CourseId == courseId).ToListAsync();
         public async Task<Topic> GetTopicByIdAsync(int id) => await _context.Topics.Include(x => x.Course).FirstOrDefaultAsync(x => x.Id == id);
 

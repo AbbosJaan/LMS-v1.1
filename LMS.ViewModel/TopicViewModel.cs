@@ -8,7 +8,6 @@ namespace LMS.ViewModel
         public int Id { get; set; }
         public string Name { get; set; }
         public DateTime Date { get; set; }
-        
         //Reletionship
         public CourseViewModel Course { get; set; }
         

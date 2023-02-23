@@ -7,11 +7,9 @@ namespace LMS.UI.Controllers
     public class CoursesController : Controller
     {
         private readonly ICourseService _courseService;
-        private readonly ITopicService _topicService;
-        public CoursesController(ICourseService courseService, ITopicService topicService)
+        public CoursesController(ICourseService courseService)
         {
             _courseService = courseService;
-            _topicService = topicService;
         }
 
         public async Task<IActionResult> Index()
